@@ -7,9 +7,16 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-	gnupg
-  ];
-
+	foot
+	(nerdfonts.override {fonts = ["JetBrainsMono"];})
+	rofi-wayland
+	starship
+	zoxide
+	bat
+	eza
+	
+];
+fonts.fontconfig.enable = true;
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
