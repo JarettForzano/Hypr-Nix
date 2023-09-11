@@ -48,7 +48,7 @@ programs.zsh = {
                 tree = "eza --tree --icons";
 		lla = "ls -la";
 		g = "git";
-                rebuild = "home-manager switch --flake '$HOME/.config/.#jarett'";
+                rebuild = "home-manager switch --flake $HOME/.config/.#jarett";
             };
 
             # Source all plugins, nix-style

@@ -13,7 +13,7 @@
 	starship
 	zoxide
 	bat
-	eza
+	#exa
 	
 ];
 fonts.fontconfig.enable = true;

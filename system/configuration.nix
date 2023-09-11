@@ -3,6 +3,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./tlp.nix
   ];
 
   networking.hostName = "jarett"; # Define your hostname.
@@ -18,6 +19,7 @@
     };
     blacklistedKernelModules = [ "nvidia" "nouveau" "psmouse" ];
   };
+  
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/New_York";
@@ -85,9 +87,12 @@ environment.variables = {
   ];
   #programs.hyprland.enable = true;
   #programs.hyprland.xwayland.enable = false;
+  
+
+
   programs.zsh.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.nixPath = [ "nixpkgs=/home/jarett" ];
   system.stateVersion = "22.11"; # Did you read the comment?
 
 }
