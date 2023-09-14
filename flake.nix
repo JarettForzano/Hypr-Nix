@@ -1,5 +1,5 @@
 {
-description = "Your new nix config";
+  description = "Your new nix config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -7,7 +7,7 @@ description = "Your new nix config";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixneovimplugins.url = github:jooooscha/nixpkgs-vim-extra-plugins;
+    nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
   };
   outputs = { nixpkgs, home-manager, ... }@inputs:
     let
@@ -15,23 +15,22 @@ description = "Your new nix config";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem {
-          modules = [
-            ./system/configuration.nix
-          ];
-        };
+        laptop =
+          nixpkgs.lib.nixosSystem { modules = [ ./system/configuration.nix ]; };
       };
       homeConfigurations = {
         jarett = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
             ./home.nix
-		{
- 		nixpkgs.overlays = [
-                                inputs.nixneovimplugins.overlays.default
-                            ];
-}
+            { nixpkgs.overlays = [ inputs.nixneovimplugins.overlays.default ]; }
           ];
+        };
+      };
+      nixpkgs = {
+        config = {
+          allowUnfree = true;
+          allowUnfreePredicate = (_: true);
         };
       };
     };

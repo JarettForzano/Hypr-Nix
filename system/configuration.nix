@@ -91,8 +91,8 @@ i18n = {
 
   # Setup environment variables (most of this depends on what you wm you are using) echo $environment (variable.name)
   environment.variables = {
-    NIXOS_CONFIG = "$HOME/.config/home-manager/system/configuration.nix";
-    NIXOS_CONFIG_DIR = "$HOME/.config/home-manager/";
+    NIXOS_CONFIG = "$HOME/.config/home-manager/system/";
+    NIXOS_HOME = "$HOME/.config/home-manager/";
     XDG_DATA_HOME = "$HOME/.local/share";
     GTK_RC_FILES = "$HOME/.local/share/gtk-1.0/gtkrc";
     GTK2_RC_FILES = "$HOME/.local/share/gtk-2.0/gtkrc";
@@ -128,6 +128,6 @@ i18n = {
   # Setup for flakes and declaration of config.version (dont worry about nix.nixPath)
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.nixPath = [ "nixpkgs=/home/jarett" ];
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 
 }
