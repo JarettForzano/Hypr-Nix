@@ -28,12 +28,10 @@
     maven
     vscode-fhs
     hyprpaper
+    ipafont
+    dejavu_fonts
 
   ];
-
-nixpkgs.config = {
-  allowUnfree = true;
-};
 
   fonts.fontconfig.enable = true;
   imports = [ ./modules ];

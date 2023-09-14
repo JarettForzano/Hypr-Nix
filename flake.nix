@@ -9,28 +9,22 @@
     };
     nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
   };
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = inputs @{ self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
         laptop =
           nixpkgs.lib.nixosSystem { modules = [ ./system/configuration.nix ]; };
       };
       homeConfigurations = {
-        jarett = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+        jarett = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
           modules = [
             ./home.nix
+            { nixpkgs.config.allowUnfreePredicate = _: true;}
             { nixpkgs.overlays = [ inputs.nixneovimplugins.overlays.default ]; }
           ];
-        };
-      };
-      nixpkgs = {
-        config = {
-          allowUnfree = true;
-          allowUnfreePredicate = (_: true);
         };
       };
     };

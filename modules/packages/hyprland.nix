@@ -3,9 +3,9 @@
 {
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = "~/.config/home-manager/photos/wallpaper.png"
-    wallpaper = eDP-1,"~/.config/home-manager/photos/wallpaper.png"
-    wallpaper = DP-1,"~/.config/home-manager/photos/wallpaper.png"
+    preload = ~/.config/home-manager/photos/wallpaper.png
+    wallpaper = eDP-1,~/.config/home-manager/photos/wallpaper.png
+    wallpaper = DP-1,~/.config/home-manager/photos/wallpaper.png
   '';
 
 # Configuration for hyprland (not imported through flake since the flake version does not have support for hyprland.settings)
@@ -20,7 +20,7 @@
 
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESK &"
-
+        "hyprpaper"
         "wl-paste -p --watch wl-copy -p ''"
       ];
 
