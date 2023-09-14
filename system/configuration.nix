@@ -20,9 +20,9 @@
     };
     # Black listed modules on startup (normally stuff that will just throw a error on boot)
     blacklistedKernelModules = [ "psmouse" ];
+    kernelPackages = pkgs.linuxPackages_zen;
   };
-
-  networking.networkmanager.enable = true;
+  systemd.watchdog.rebootTime = "0";
 
   # Time zone stuff
   time.timeZone = "America/New_York";
@@ -40,10 +40,25 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
+i18n = {
+        inputMethod = {
+            enabled = "fcitx5";
+            fcitx5.addons = with pkgs; [
+                fcitx5-mozc
+                fcitx5-gtk
+            ];
+        };
+    };
+
   # services / packages (for organization)
   services.xserver.enable = false;
   programs.zsh.enable = true;
   security.polkit.enable = true;
+  programs.dconf.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  networking.networkmanager.enable = true;
+
 
   # Setup user here (make sure you have a password if not defined here)
   users.users.jarett = {
@@ -51,7 +66,6 @@
     description = "Jarett";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ ];
   };
   # Nix options for running gc automatically (removes the need to run it manually) 
   nix = {
@@ -90,7 +104,7 @@
   };
 
   # Stuff installed globally throughout all users (ill take your kneecaps if you dont use nxfmt to format your .nix files)
-  environment.systemPackages = with pkgs; [ vim nixfmt firefox ];
+  environment.systemPackages = with pkgs; [ neovim nixfmt firefox pavucontrol ];
 
   # Sound setup. Can be changed (use pavucontrol to select devices in use -- even though you arent using pavu to control sound)
   security.rtkit.enable = true;

@@ -5,6 +5,7 @@
 
 	imports = [
 		./xdg.nix
-		#./gtk.nix
+		./git.nix
+		./gtk.nix
 	];
 }

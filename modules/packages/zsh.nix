@@ -45,7 +45,7 @@
       tree = "eza --tree --icons";
       lla = "ls -la";
       g = "git";
-      exa = "eza";
+      v = "nvim";
       rebuild = "home-manager switch --flake $HOME/.config/home-manager#jarett";
       rebuild_config =
         "sudo nixos-rebuild switch --flake $HOME/.config/home-manager#laptop";

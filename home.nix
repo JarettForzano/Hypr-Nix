@@ -19,15 +19,17 @@
 	sumneko-lua-language-server
 	stylua
 	webcord-vencord
+        brightnessctl
+        unzip
+        croc
+        btop
+        anki
+
 	
 	
 ];
 fonts.fontconfig.enable = true;
 
-  # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
-  imports = [ ./modules ./system ];
+  imports = [ ./modules ];
   programs.home-manager.enable = true;
 }
