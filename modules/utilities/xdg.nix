@@ -1,5 +1,6 @@
 { pkgs, config, ... }: {
-  xdg = {
+# Setup of all the xdg paths
+xdg = {
     userDirs = {
       enable = true;
       documents = "$HOME/Documents/";

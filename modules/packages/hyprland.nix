@@ -1,8 +1,10 @@
-{config, pkgs,... }:
+{ config, pkgs, ... }:
 
 {
+# Configuration for hyprland (not imported through flake since the flake version does not have support for hyprland.settings)
   wayland.windowManager.hyprland = {
     enable = true;
+    systemdIntegration = true;
     enableNvidiaPatches = false;
     xwayland.enable = false;
 
@@ -45,13 +47,13 @@
         "col.shadow" = "0xFFDAB9E5";
         "col.shadow_inactive" = "0x50000000";
         #blur = {
-	#enable = true;
-          #passes = 2;
-          #size = 7;
-          #new_optimizations = true;
-          #noise = 0.07;
-          #contrast = 1.6;
-          #brightness = 1.1;
+        #enable = true;
+        #passes = 2;
+        #size = 7;
+        #new_optimizations = true;
+        #noise = 0.07;
+        #contrast = 1.6;
+        #brightness = 1.1;
         #};
       };
 
@@ -134,12 +136,9 @@
       ];
 
       bindm = [ "$MOD,mouse:272,movewindow" "$MOD,mouse:273,resizewindow" ];
-	};
-      extraConfig ="
-        monitor = eDP-1,1920x1080@60,0x0,1
-        monitor = DP-1,1920x1080@60,0x1920,1
-
-      ";
+    };
+    extraConfig =
+      "\n        monitor = eDP-1,1920x1080@60,0x0,1\n        monitor = DP-1,1920x1080@60,0x1920,1\n\n      ";
 
   };
 }

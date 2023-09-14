@@ -1,5 +1,7 @@
 { pkgs, config, ... }: {
-  programs.foot = {
+  
+# Configuration for foot
+programs.foot = {
     enable = true;
     settings = {
       main = {

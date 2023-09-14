@@ -7,14 +7,15 @@ description = "Your new nix config";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixneovimplugins.url = github:jooooscha/nixpkgs-vim-extra-plugins;
   };
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
-        jarett = nixpkgs.lib.nixosSystem {
+        laptop = nixpkgs.lib.nixosSystem {
           modules = [
             ./system/configuration.nix
           ];
@@ -25,6 +26,11 @@ description = "Your new nix config";
           inherit pkgs;
           modules = [
             ./home.nix
+		{
+ 		nixpkgs.overlays = [
+                                inputs.nixneovimplugins.overlays.default
+                            ];
+}
           ];
         };
       };

@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-
+  # Important if you are on a laptop and want more than one hour of battery (you can find tlp settings under the docs) 
   services = {
     tlp.enable = true;
     tlp.settings = {
