@@ -22,11 +22,12 @@
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESK &"
         "hyprpaper"
         "wl-paste -p --watch wl-copy -p ''"
+        "waybar"
       ];
 
       input = {
         kb_layout = "us";
-        follow_mouse = 0;
+        follow_mouse = 2;
         sensitivity = 0;
         accel_profile = "flat";
         natural_scroll = false;
@@ -144,7 +145,8 @@
       bindm = [ "$MOD,mouse:272,movewindow" "$MOD,mouse:273,resizewindow" ];
     };
     extraConfig =
-      "\n        monitor = eDP-1,1920x1080@60,0x0,1\n        monitor = DP-1,1920x1080@60,0x1920,1\n\n      windowrulev2 = noanim, class:^(rofi)$\n";
+      "\n        monitor = eDP-1,1920x1080@60,0x0,1\n        monitor = DP-1,1920x1080@60,0x1920,1\n\n      layerrule=noanim,rofi\n env = WLR_NO_HARDWARE_CURSORS,1
+\n";
 
   };
 }

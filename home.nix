@@ -31,6 +31,7 @@
     ipafont
     dejavu_fonts
     stm32cubemx
+    font-awesome
 
   ];
 
