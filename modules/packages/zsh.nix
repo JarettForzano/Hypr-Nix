@@ -18,10 +18,6 @@
       export XMODIFIERS=@im=fcitx
       export XIM_SERVERS=fcitx
 
-      bindkey '^ ' autosuggest-accept
-      edir() { tar -cz $1 | age -p > $1.tar.gz.age && rm -rf $1 &>/dev/null && echo "$1 encrypted" }
-      ddir() { age -d $1 | tar -xz && rm -rf $1 &>/dev/null && echo "$1 decrypted" }
-
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
     '';

@@ -4,6 +4,6 @@
 
   home.stateVersion = "23.05";
 
-  imports = [ ./hyprland.nix ./foot.nix ./starship.nix ./zsh.nix ./nvim.nix ];
+  imports = [ ./hyprland.nix ./foot.nix ./starship.nix ./zsh.nix ./nvim.nix ./nix-colors.nix ./eww.nix ./rofi.nix];
 
 }

@@ -9,7 +9,7 @@
   home.packages = with pkgs; [
     foot
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    rofi-wayland
+    montserrat
     starship
     zoxide
     bat
@@ -30,6 +30,7 @@
     hyprpaper
     ipafont
     dejavu_fonts
+    stm32cubemx
 
   ];
 

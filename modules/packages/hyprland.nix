@@ -8,12 +8,12 @@
     wallpaper = DP-1,~/.config/home-manager/photos/wallpaper.png
   '';
 
-# Configuration for hyprland (not imported through flake since the flake version does not have support for hyprland.settings)
+  # Configuration for hyprland (not imported through flake since the flake version does not have support for hyprland.settings)
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
     enableNvidiaPatches = false;
-    xwayland.enable = false;
+    xwayland.enable = true;
 
     settings = {
       "$MOD" = "SUPER";
@@ -93,9 +93,8 @@
         "$MOD,M,exec,hyprctl dispatch exit"
         "$MODSHIFT,Q,killactive"
         "$MOD, Space, togglefloating"
-        "$MOD,Q,exec,rofi -show drun"
+        "$MOD,Q,exec,rofi -i -show drun -modi drun -show-icons"
         "$MOD,F,fullscreen"
-        "SHIFTALT,F,exec,thunar"
         ",XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle "
         ",XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
@@ -145,7 +144,7 @@
       bindm = [ "$MOD,mouse:272,movewindow" "$MOD,mouse:273,resizewindow" ];
     };
     extraConfig =
-      "\n        monitor = eDP-1,1920x1080@60,0x0,1\n        monitor = DP-1,1920x1080@60,0x1920,1\n\n      ";
+      "\n        monitor = eDP-1,1920x1080@60,0x0,1\n        monitor = DP-1,1920x1080@60,0x1920,1\n\n      windowrulev2 = noanim, class:^(rofi)$\n";
 
   };
 }
