@@ -33,8 +33,6 @@
     sioyek
     arc-icon-theme
     mpvpaper
-    obs-cli
-    flameshot
 
   ];
 
