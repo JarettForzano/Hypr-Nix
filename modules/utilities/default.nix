@@ -6,6 +6,7 @@
 	imports = [
 		./xdg.nix
 		./git.nix
-		./gtk.nix
+                ./gtk.nix
+                ./dconf.nix
 	];
 }

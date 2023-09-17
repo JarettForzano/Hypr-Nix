@@ -1,19 +1,12 @@
 { config, pkgs, ... }:
 
 {
-
-  xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/.config/home-manager/photos/wallpaper.png
-    wallpaper = eDP-1,~/.config/home-manager/photos/wallpaper.png
-    wallpaper = DP-1,~/.config/home-manager/photos/wallpaper.png
-  '';
-
   # Configuration for hyprland (not imported through flake since the flake version does not have support for hyprland.settings)
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
     enableNvidiaPatches = false;
-    xwayland.enable = true;
+    xwayland.enable = false;
 
     settings = {
       "$MOD" = "SUPER";
@@ -22,7 +15,9 @@
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESK &"
         "hyprpaper"
         "wl-paste -p --watch wl-copy -p ''"
-        "waybar"
+        "fcitx5"
+        "mpvpaper '*' -o --loop-file=inf ~/.config/home-manager/photos/wallpaper.png"
+
       ];
 
       input = {
@@ -145,8 +140,7 @@
       bindm = [ "$MOD,mouse:272,movewindow" "$MOD,mouse:273,resizewindow" ];
     };
     extraConfig =
-      "\n        monitor = eDP-1,1920x1080@60,0x0,1\n        monitor = DP-1,1920x1080@60,0x1920,1\n\n      layerrule=noanim,rofi\n env = WLR_NO_HARDWARE_CURSORS,1
-\n";
+      "\n        monitor = eDP-1,1920x1080@60,0x0,1\n        monitor = DP-1,1920x1080@60,0x1920,1\n\n      layerrule=noanim,rofi\n";
 
   };
 }

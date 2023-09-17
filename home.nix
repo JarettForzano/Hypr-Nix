@@ -8,7 +8,7 @@
 
   home.packages = with pkgs; [
     foot
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka"]; })
     montserrat
     starship
     zoxide
@@ -27,11 +27,14 @@
     jdk17
     maven
     vscode-fhs
-    hyprpaper
     ipafont
     dejavu_fonts
-    stm32cubemx
     font-awesome
+    sioyek
+    arc-icon-theme
+    mpvpaper
+    obs-cli
+    flameshot
 
   ];
 
