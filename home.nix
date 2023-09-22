@@ -25,7 +25,6 @@
     anki
     jdk17
     maven
-    vscode-fhs
     ipafont
     dejavu_fonts
     font-awesome
