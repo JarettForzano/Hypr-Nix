@@ -2,7 +2,7 @@
 
 {
   # Import extensions to configuration.nix (stuff that is specific to my system)
-  imports = [ ./hardware-configuration.nix ./tlp.nix ./nvidia.nix ./virt.nix];
+  imports = [ ./hardware-configuration.nix ./tlp.nix ./nvidia.nix ./virt.nix ./systemd.nix];
 
   # Setting up the hostname (shown in flake.nix)
   networking.hostName = "laptop";
@@ -63,7 +63,7 @@ i18n = {
   users.users.jarett = {
     isNormalUser = true;
     description = "Jarett";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd"];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "input"];
     shell = pkgs.zsh;
   };
   # Nix options for running gc automatically (removes the need to run it manually) 
@@ -84,7 +84,7 @@ i18n = {
     autostart.enable = true;
     portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
   };
 

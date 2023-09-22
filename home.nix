@@ -18,7 +18,6 @@
     rnix-lsp
     sumneko-lua-language-server
     stylua
-    webcord-vencord
     brightnessctl
     unzip
     croc
@@ -33,7 +32,13 @@
     sioyek
     arc-icon-theme
     mpvpaper
-
+    grim
+    slurp
+    wl-clipboard
+    obsidian
+    nodejs_20
+    ani-cli
+    nodePackages."@angular/cli"
   ];
 
   fonts.fontconfig.enable = true;

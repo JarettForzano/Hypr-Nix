@@ -1,4 +1,5 @@
-{ pkgs, conifg, ... }:
+{ pkgs, conifg, lib, ... }:
+with lib;
 
 {
   programs.waybar = {
@@ -9,7 +10,7 @@
       mainBar = {
       height = 30;
       layer = "top";
-      modules-left = [ "custom/launcher" "wlr/workspaces" ];
+      modules-left = [ "custom/launcher" "hyprland/workspaces" ];
       modules-center = [ "clock" ];
       modules-right = [
         "tray"
@@ -19,7 +20,7 @@
         "backlight"
         "battery"
       ];
-      "wlr/workspace" = {
+      "hyprland/workspace" = {
         format = "{icon}";
         on-click = "activate";
       };
@@ -28,7 +29,7 @@
 
       "tray" = { spacing = 10; };
 
-      "clock" = { format = "{:%H:%M}"; };
+      "clock" = { format = "{:%I:%M}"; };
 
       "backlight" = {
         format = "{icon}";
@@ -41,7 +42,7 @@
         format-ethernet = "󰞉";
         format-disconnected = "󰤭";
         tooltip-format = "{essid}";
-        on-click = "foot nmtui";
+        on-click = ''${pkgs.foot}/bin/foot nmtui'';
         format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
       };
 
@@ -49,7 +50,7 @@
         format = "{icon}";
         format-muted = "󰝟";
         format-icons = { default = [ "" "" "󰕾" ]; };
-        on-click = "pavucontrol &";
+        on-click = ''${pkgs.pavucontrol}/bin/pavucontrol'';
       };
 
       "battery" = {
@@ -62,17 +63,16 @@
         format = "{icon} ";
         format-warning = "{icon}";
         format-critical = "{icon}";
-        format-charging = "<span font-family='Font Awesome 6 Free'></span>";
-        format-plugged = "ﮣ";
+        format-plugged = "󰂄";
 
         format-alt = "{icon} {time}";
-        format-full = "ﮣ";
+        format-full = "";
         format-icons = [ "󱊡" "󱊢" "󱊣" ];
       };
 
       "custom/launcher" = {
         format = "󱄅";
-        on-click = "rofi -show drun &";
+        on-click = ''${pkgs.rofi-wayland}/bin/rofi -show drun'';
       };
     };
     };
@@ -87,7 +87,6 @@
         background-color: rgba(17, 17, 17, 0.3);;
         color: #ffffff;
         transition-property: background-color;
-        transition-duration: 0.5s;
       }
 
       window#waybar.hidden {
@@ -128,27 +127,15 @@
         padding-left: 4px;
 
         margin-left: 0.1em;
-        margin-right: 0em;
-        transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+        margin-right: 0.1em;
       }
 
       #workspaces button.active {
         color: #ecd3a0;
         padding-left: 1px;
-        padding-right: 12px;
+        padding-right: 1px;
         margin-left: 0em;
         margin-right: 0em;
-        transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-      }
-
-      /* If workspaces is the leftmost module, omit left margin */
-      .modules-left > widget:first-child > #workspaces {
-        margin-left: 0;
-      }
-
-      /* If workspaces is the rightmost module, omit right margin */
-      .modules-right > widget:last-child > #workspaces {
-        margin-right: 0;
       }
 
       #custom-launcher {
@@ -200,7 +187,7 @@
       }
 
       #battery {
-        color: #8fbcbb;
+        color: #2c6fbb;
         border-radius: 0px 8px 8px 0px;
         padding-right: 2px;
       }
@@ -209,7 +196,7 @@
       #battery.warning,
       #battery.full,
       #battery.plugged {
-        color: #8fbcbb;
+        color: #19461a;
         padding-left: 6px;
         padding-right: 12px;
       }
@@ -224,19 +211,12 @@
         padding-right: 10px;
       }
 
-      @keyframes blink {
-        to {
-          background-color: rgba(30, 34, 42, 0.5);
-          color: #abb2bf;
-        }
-      }
-
       #battery.warning {
-        color: #ecd3a0;
+        color: #f9c70c;
       }
 
       #battery.critical:not(.charging) {
-        color: #fb958b;
+        color: #c40233;
       }
 
       #clock {
@@ -276,11 +256,6 @@
 
       #tray > .passive {
         -gtk-icon-effect: dim;
-      }
-
-      #tray > .needs-attention {
-        -gtk-icon-effect: highlight;
-        background-color: #eb4d4b;
       }
 
       #idle_inhibitor {

@@ -9,10 +9,7 @@
 
     # .zshrc
     initExtra = ''
-      export DIRENV_LOG_FORMAT="";
-      export LIBSEAT_BACKEND=logind;
-
-      export INPUT_METHOD=fcitx
+      export INPUT_METHOD=fcit
       export QT_IM_MODULE=fcitx
       export GTK_IM_MODULE=fcitx
       export XMODIFIERS=@im=fcitx
@@ -44,11 +41,12 @@
       v = "nvim";
       vim = "nvim";
       rebuild = "home-manager switch --flake $HOME/.config/home-manager#jarett";
-      rebuild_config =
-        "sudo nixos-rebuild switch --flake $HOME/.config/home-manager#laptop";
+      nixos-rebuild = "sudo nixos-rebuild switch --flake $HOME/.config/home-manager#laptop";
+
+
+      webcord = "firefox -new-window https://discord.com/channels/@me";
+      slack = "firefox -new-window https://app.slack.com/client/T05PGHE2AUE/C05QT0NC1L6";
     };
 
-    # Source all plugins, nix-style
-    plugins = [ ];
   };
 }
