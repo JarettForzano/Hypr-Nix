@@ -8,7 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nix-colors, ... }:
     let system = "x86_64-linux";
@@ -47,7 +46,6 @@
           modules = [
             ./home.nix
             { nixpkgs.config.allowUnfreePredicate = _: true; }
-            { nixpkgs.overlays = [ inputs.nixneovimplugins.overlays.default ]; }
           ];
         };
       };

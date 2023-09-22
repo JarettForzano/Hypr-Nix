@@ -103,7 +103,7 @@ i18n = {
   };
 
   # Stuff installed globally throughout all users (ill take your kneecaps if you dont use nxfmt to format your .nix files)
-  environment.systemPackages = with pkgs; [ neovim nixfmt firefox pavucontrol ];
+  environment.systemPackages = with pkgs; [ nano nixfmt firefox pavucontrol ];
 
   # Sound setup. Can be changed (use pavucontrol to select devices in use -- even though you arent using pavu to control sound)
   security.rtkit.enable = true;

@@ -38,6 +38,7 @@
     nodejs_20
     ani-cli
     nodePackages."@angular/cli"
+    tinycc
   ];
 
   fonts.fontconfig.enable = true;
