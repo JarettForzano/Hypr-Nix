@@ -39,6 +39,7 @@
     ani-cli
     nodePackages."@angular/cli"
     tinycc
+    cinnamon.nemo
   ];
 
   fonts.fontconfig.enable = true;

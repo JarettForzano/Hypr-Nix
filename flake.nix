@@ -3,13 +3,12 @@
 
   inputs = {
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    nix-colors.url = "github:misterio77/nix-colors";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-colors, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -41,7 +40,7 @@
       };
       homeConfigurations = {
         jarett = inputs.home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = { inherit nix-colors; };
+          extraSpecialArgs = { };
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [
             ./home.nix

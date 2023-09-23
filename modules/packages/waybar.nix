@@ -42,7 +42,7 @@ with lib;
         format-ethernet = "󰞉";
         format-disconnected = "󰤭";
         tooltip-format = "{essid}";
-        on-click = ''${pkgs.foot}/bin/foot nmtui'';
+        on-click = ''${pkgs.foot}/bin/foot ${pkgs.networkmanager} nmtui'';
         format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
       };
 
