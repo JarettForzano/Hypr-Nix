@@ -12,7 +12,7 @@
     ./nvim.nix
     ./rofi.nix
     ./waybar.nix
-    #./vscode.nix
+    ./vscode.nix
   ];
 
 }

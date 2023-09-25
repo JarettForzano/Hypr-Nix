@@ -43,8 +43,6 @@
       rebuild = "home-manager switch --flake $HOME/.config/home-manager#jarett";
       nixos-rebuild = "sudo nixos-rebuild switch --flake $HOME/.config/home-manager#laptop";
 
-
-      webcord = "firefox -new-window https://discord.com/channels/@me";
       slack = "firefox -new-window https://app.slack.com/client/T05PGHE2AUE/C05QT0NC1L6";
     };
 

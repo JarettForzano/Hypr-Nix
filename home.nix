@@ -13,6 +13,7 @@
     starship
     zoxide
     bat
+    zip
     eza
     pastebinit
     rnix-lsp
@@ -40,6 +41,11 @@
     nodePackages."@angular/cli"
     tinycc
     cinnamon.nemo
+    webcord
+    spring-boot-cli
+    (python3.withPackages(ps: with ps; [ flask flask-cors ]))
+    nodePackages.typescript
+    baekmuk-ttf
   ];
 
   fonts.fontconfig.enable = true;
