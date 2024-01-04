@@ -8,6 +8,8 @@
 
   home.packages = with pkgs; [
     foot
+    vim
+    dconf
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka"]; })
     montserrat
     starship

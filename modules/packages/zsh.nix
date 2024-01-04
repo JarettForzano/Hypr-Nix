@@ -40,8 +40,8 @@
       g = "git";
       v = "nvim";
       vim = "nvim";
-      rebuild = "home-manager switch --flake $HOME/.config/home-manager#jarett";
-      nixos-rebuild = "sudo nixos-rebuild switch --flake $HOME/.config/home-manager#laptop";
+      rebuild = "home-manager switch --flake $HOME/.config/Hypr-Nix#jarett";
+      nixos-rebuild = "sudo nixos-rebuild switch --flake $HOME/.config/Hypr-Nix#laptop";
 
       slack = "firefox -new-window https://app.slack.com/client/T05PGHE2AUE/C05QT0NC1L6";
     };
