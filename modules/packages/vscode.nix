@@ -2,10 +2,7 @@
 {
   programs.vscode = {
     enable = true;
-    package = (import inputs.nixpkgs-vscode {
-        system = pkgs.system;
-        config.allowUnfree = true;
-      })
-      .vscode;
+    package = pkgs.vscode;
+    extensions = [ vscode-extensions.ms-vscode.cpptools ];
   };
 }

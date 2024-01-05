@@ -1,12 +1,14 @@
 {pkgs, conifg, ...}:
 {
-dconf.settings = {
-  "org/virt-manager/virt-manager/connections" = {
-    autoconnect = ["qemu:///system"];
-    uris = ["qemu:///system"];
+dconf = {
+  enable = true;
+  settings = {
+  	"org/virt-manager/virt-manager/connections" = {
+    	autoconnect = ["qemu:///system"];
+    	uris = ["qemu:///system"];
+  	};
+   };
   };
-};
-
 
 
 }

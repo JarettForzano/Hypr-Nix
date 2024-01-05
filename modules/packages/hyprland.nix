@@ -11,7 +11,7 @@ in
 ];
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
+    systemd.enable = true;
     enableNvidiaPatches = false;
     xwayland.enable = false;
 
@@ -23,7 +23,7 @@ in
         "hyprpaper"
         "wl-paste -p --watch wl-copy -p ''"
         "fcitx5"
-        "mpvpaper '*' -o --loop-file=inf ~/.config/home-manager/photos/wallpaper.png"
+        "mpvpaper '*' -o --loop-file=inf ~/.config/Hypr-Nix/photos/wallpaper.png"
 
       ];
 

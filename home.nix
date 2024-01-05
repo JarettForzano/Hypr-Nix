@@ -7,9 +7,7 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    foot
     vim
-    dconf
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka"]; })
     montserrat
     starship
@@ -19,15 +17,11 @@
     eza
     pastebinit
     rnix-lsp
-    sumneko-lua-language-server
-    stylua
     brightnessctl
     unzip
     croc
     btop
     anki
-    jdk17
-    maven
     ipafont
     dejavu_fonts
     font-awesome
@@ -37,16 +31,10 @@
     grim
     slurp
     wl-clipboard
-    obsidian
-    nodejs_20
     ani-cli
-    nodePackages."@angular/cli"
     tinycc
     cinnamon.nemo
     webcord
-    spring-boot-cli
-    (python3.withPackages(ps: with ps; [ flask flask-cors ]))
-    nodePackages.typescript
     baekmuk-ttf
   ];
 

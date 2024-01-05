@@ -7,9 +7,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-nixpkgs-vscode.url = "github:nixos/nixpkgs/db9208ab987cdeeedf78ad9b4cf3c55f5ebd269b";
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-vscode, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -41,7 +40,7 @@ nixpkgs-vscode.url = "github:nixos/nixpkgs/db9208ab987cdeeedf78ad9b4cf3c55f5ebd2
       };
       homeConfigurations = {
         jarett = inputs.home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = {inherit  nixpkgs-vscode; inherit inputs; };
+          extraSpecialArgs = { inherit inputs; };
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [
             ./home.nix

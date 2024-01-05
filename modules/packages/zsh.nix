@@ -17,9 +17,10 @@
 
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
+      
     '';
 # picks where to store the files for zsh
-    dirHashes = { dots = "$HOME/.config/home-manager"; };
+    dirHashes = { dots = "$HOME/.config/Hypr-Nix"; };
 
     history = {
       save = 1000;
@@ -43,7 +44,6 @@
       rebuild = "home-manager switch --flake $HOME/.config/Hypr-Nix#jarett";
       nixos-rebuild = "sudo nixos-rebuild switch --flake $HOME/.config/Hypr-Nix#laptop";
 
-      slack = "firefox -new-window https://app.slack.com/client/T05PGHE2AUE/C05QT0NC1L6";
     };
 
   };
