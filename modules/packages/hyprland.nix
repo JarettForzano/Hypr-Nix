@@ -1,14 +1,11 @@
 { config, pkgs, ... }:
 let
-touchpad = pkgs.writeShellScriptBin "touchpad" ''
-[[ -f ~/.myflag ]] && { hyprctl keyword device:pnp0c50:00-06cb:7e7e-touchpad:enabled true; rm ~/.myflag; } || { hyprctl keyword device:pnp0c50:00-06cb:7e7e-touchpad:enabled false; touch ~/.myflag; }
-'';
-in
-{
+  touchpad = pkgs.writeShellScriptBin "touchpad" ''
+    [[ -f ~/.myflag ]] && { hyprctl keyword device:pnp0c50:00-06cb:7e7e-touchpad:enabled true; rm ~/.myflag; } || { hyprctl keyword device:pnp0c50:00-06cb:7e7e-touchpad:enabled false; touch ~/.myflag; }
+  '';
+in {
   # Configuration for hyprland (not imported through flake since the flake version does not have support for hyprland.settings)
-  home.packages = with pkgs; [
-  	touchpad
-];
+  home.packages = with pkgs; [ touchpad ];
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -100,8 +97,8 @@ in
         "$MOD,F,fullscreen"
         ",XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle "
         ",XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-	"ALT,E,exec, nemo"
-	",f8, exec, touchpad"
+        "ALT,E,exec, nemo"
+        ",f8, exec, touchpad"
 
         "$MOD, left, movefocus, l"
         "$MOD, right, movefocus, r"

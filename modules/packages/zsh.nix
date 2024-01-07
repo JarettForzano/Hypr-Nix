@@ -17,9 +17,9 @@
 
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
-      
+
     '';
-# picks where to store the files for zsh
+    # picks where to store the files for zsh
     dirHashes = { dots = "$HOME/.config/Hypr-Nix"; };
 
     history = {
@@ -42,7 +42,8 @@
       v = "nvim";
       vim = "nvim";
       rebuild = "home-manager switch --flake $HOME/.config/Hypr-Nix#jarett";
-      nixos-rebuild = "sudo nixos-rebuild switch --flake $HOME/.config/Hypr-Nix#laptop";
+      nixos-rebuild =
+        "sudo nixos-rebuild switch --flake $HOME/.config/Hypr-Nix#laptop";
 
     };
 

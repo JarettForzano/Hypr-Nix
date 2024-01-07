@@ -9,6 +9,11 @@
 
   # Telling boot to make sure it uses intel module and the rest is just setting up systemd-boot (boot options)
   boot = {
+    # Supposed to help speed up firefox
+    kernelParams = ["ipv6.disable=1"];
+    # Used to add support for NTFS systems at boot
+    supportedFilesystems = [ "ntfs" ];
+
     initrd.kernelModules = [ "i915" ];
     initrd.verbose = false;
     initrd.systemd.enable = true;
@@ -26,6 +31,8 @@
 
   # Time zone stuff
   time.timeZone = "America/New_York";
+  # Fixes time for duel boot
+  time.hardwareClockInLocalTime = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -57,7 +64,7 @@ i18n = {
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   networking.networkmanager.enable = true;
-
+  networking.enableIPv6 = false;
 
   # Setup user here (make sure you have a password if not defined here)
   users.users.jarett = {
@@ -84,6 +91,7 @@ i18n = {
     autostart.enable = true;
     portal = {
       enable = true;
+      config.common.default = "*";
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
   };
@@ -98,7 +106,7 @@ i18n = {
     MOZ_ENABLE_WAYLAND = "1";
     ANKI_WAYLAND = "1";
     DISABLE_QT5_COMPAT = "0";
-    NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = "0";
     MOZ_WEBRENDER = "1";
   };
 
@@ -126,7 +134,6 @@ i18n = {
 
   # Setup for flakes and declaration of config.version (dont worry about nix.nixPath)
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.nixPath = [ "nixpkgs=/home/jarett" ];
   system.stateVersion = "23.05"; # Did you read the comment?
 
 }

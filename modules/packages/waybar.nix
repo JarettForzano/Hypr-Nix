@@ -8,73 +8,73 @@ with lib;
     systemd.enable = true;
     settings = {
       mainBar = {
-      height = 30;
-      layer = "top";
-      modules-left = [ "custom/launcher" "hyprland/workspaces" ];
-      modules-center = [ "clock" ];
-      modules-right = [
-        "tray"
-        "hyprland/language"
-        "network"
-        "pulseaudio"
-        "backlight"
-        "battery"
-      ];
-      "hyprland/workspace" = {
-        format = "{icon}";
-        on-click = "activate";
-      };
-
-      "hyprland/language" = { format = "{short} {variant}"; };
-
-      "tray" = { spacing = 10; };
-
-      "clock" = { format = "{:%I:%M}"; };
-
-      "backlight" = {
-        format = "{icon}";
-        tooltip-format = "{percent}";
-        format-icons = [ "󱩎 " "󱩏 " "󱩐 " "󱩑 " "󱩒 " "󱩓 " "󱩔 " "󱩕 " "󱩖 " "󰛨 " ];
-      };
-
-      "network" = {
-        format-wifi = "{icon}";
-        format-ethernet = "󰞉";
-        format-disconnected = "󰤭";
-        tooltip-format = "{essid}";
-        on-click = ''${pkgs.foot}/bin/foot ${pkgs.networkmanager} nmtui'';
-        format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
-      };
-
-      "pulseaudio" = {
-        format = "{icon}";
-        format-muted = "󰝟";
-        format-icons = { default = [ "" "" "󰕾" ]; };
-        on-click = ''${pkgs.pavucontrol}/bin/pavucontrol'';
-      };
-
-      "battery" = {
-        interval = 60;
-        states = {
-          warning = 30;
-          critical = 15;
+        height = 30;
+        layer = "top";
+        modules-left = [ "custom/launcher" "hyprland/workspaces" ];
+        modules-center = [ "clock" ];
+        modules-right = [
+          "tray"
+          "hyprland/language"
+          "network"
+          "pulseaudio"
+          "backlight"
+          "battery"
+        ];
+        "hyprland/workspace" = {
+          format = "{icon}";
+          on-click = "activate";
         };
-        max-length = 20;
-        format = "{icon} ";
-        format-warning = "{icon}";
-        format-critical = "{icon}";
-        format-plugged = "󰂄";
 
-        format-alt = "{icon} {time}";
-        format-full = "";
-        format-icons = [ "󱊡" "󱊢" "󱊣" ];
-      };
+        "hyprland/language" = { format = "{short} {variant}"; };
 
-      "custom/launcher" = {
-        format = "󱄅";
-        on-click = ''${pkgs.rofi-wayland}/bin/rofi -show drun'';
+        "tray" = { spacing = 10; };
+
+        "clock" = { format = "{:%I:%M}"; };
+
+        "backlight" = {
+          format = "{icon}";
+          tooltip-format = "{percent}";
+          format-icons = [ "󱩎 " "󱩏 " "󱩐 " "󱩑 " "󱩒 " "󱩓 " "󱩔 " "󱩕 " "󱩖 " "󰛨 " ];
+        };
+
+        "network" = {
+          format-wifi = "{icon}";
+          format-ethernet = "󰞉";
+          format-disconnected = "󰤭";
+          tooltip-format = "{essid}";
+          on-click = "${pkgs.foot}/bin/foot ${pkgs.networkmanager} nmtui";
+          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+        };
+
+        "pulseaudio" = {
+          format = "{icon}";
+          format-muted = "󰝟";
+          format-icons = { default = [ "" "" "󰕾" ]; };
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+        };
+
+        "battery" = {
+          interval = 60;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          max-length = 20;
+          format = "{icon} ";
+          format-warning = "{icon}";
+          format-critical = "{icon}";
+          format-plugged = "󰂄";
+
+          format-alt = "{icon} {time}";
+          format-full = "";
+          format-icons = [ "󱊡" "󱊢" "󱊣" ];
+        };
+
+        "custom/launcher" = {
+          format = "󱄅";
+          on-click = "${pkgs.rofi-wayland}/bin/rofi -show drun";
+        };
       };
-    };
     };
 
     style = ''

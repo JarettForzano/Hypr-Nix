@@ -36,6 +36,7 @@
     cinnamon.nemo
     webcord
     baekmuk-ttf
+    lunarvim
   ];
 
   fonts.fontconfig.enable = true;
